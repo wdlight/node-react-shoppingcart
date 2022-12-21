@@ -10,15 +10,20 @@ const ProductDetails = ({product, products}) => {
   
   const { image, name, details, price } = product;
   const [index, setIndex] = useState( 0);
-  const { decQty, incQty, qty} = useStateContext();
+  const { decQty, incQty, qty, onAdd, setShowCart} = useStateContext();
+
+  const handleBuyNow = () =>{
+    onAdd(product, qty);
+    setShowCart(true);
+  }
+
 
   return (
     <div>
       <div className="product-detail-container">
         <div>
           <div className="image-container">
-            <img src={urlFor(( image && image[index] ))} 
-            className="product-detail-image"/>
+            <img src={urlFor(( image && image[index] ))} className="product-detail-image"/>
           </div>
           <div className="small-images-container">
             {image?.map((item, i ) => (
@@ -48,14 +53,14 @@ const ProductDetails = ({product, products}) => {
             <div className="quantity">
               <h3>Quantity:</h3>
               <p className="quantity-desc">
-                <span className="minus" onClick={incQty}><AiOutlineMinus/></span>
+                <span className="minus" onClick={decQty}><AiOutlineMinus/></span>
                 <span className="num" onClick="">{qty}</span>
-                <span className="plus" onClick={decQty}><AiOutlinePlus/></span>
+                <span className="plus" onClick={incQty}><AiOutlinePlus/></span>
               </p>                          
             </div>
             <div className="buttons">
-              <button type="button" className="add-to-cart" on-click="">Add to Cart</button>
-              <button type="button" className="buy-now" on-click="">Buy Now</button>
+              <button type="button" className="add-to-cart" onClick={ () => onAdd(product, qty)}> Add to Cart</button>
+              <button type="button" className="buy-now" onClick="">Buy Now</button>
             </div>  
           </div>         
       </div>
