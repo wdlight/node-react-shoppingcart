@@ -7,10 +7,10 @@ import { Product, FooterBanner, WideBanner} from '../components'
 const Home = ( {products, bannerData}) => (
     <div>
       <WideBanner wideBanner={bannerData.length && bannerData[0] }/>
-      { console.log( bannerData)}
+      { console.log( "Banner Item:",bannerData)}
       <div className="products-heading">
         <h2>Wide Selling Products</h2>
-        <p>Apple. Inc, Line up </p>
+        <p>Apple. Inc, New Line up every year!</p>
       </div>
       
 

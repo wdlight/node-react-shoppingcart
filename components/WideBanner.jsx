@@ -13,7 +13,7 @@ const WideBanner = ( {wideBanner}) => {
         <img className="wide-banner-image" src={ urlFor(wideBanner.image) } alt="macbook pro"></img>
 
         <div>
-          <Link href='/product/${wideBanner.product}'>
+          <Link href={`/product/${wideBanner.product}`} >
             <button type="button">{wideBanner.buttonText}</button>
           </Link>
           <div className="desc">

@@ -15,7 +15,7 @@ const ProductDetails = ({product, products}) => {
   const handleBuyNow = () =>{
     onAdd(product, qty);
     setShowCart(true);
-  }
+  };
 
 
   return (
@@ -28,6 +28,7 @@ const ProductDetails = ({product, products}) => {
           <div className="small-images-container">
             {image?.map((item, i ) => (
               <img 
+                key= {i}
                 src={urlFor(item)}
                 className={ i === index ? 'small-image selected-image' : 'small-image'}
                 onMouseEnter={() => setIndex(i)}
@@ -54,13 +55,13 @@ const ProductDetails = ({product, products}) => {
               <h3>Quantity:</h3>
               <p className="quantity-desc">
                 <span className="minus" onClick={decQty}><AiOutlineMinus/></span>
-                <span className="num" onClick="">{qty}</span>
+                <span className="num" >{qty}</span>
                 <span className="plus" onClick={incQty}><AiOutlinePlus/></span>
               </p>                          
             </div>
             <div className="buttons">
-              <button type="button" className="add-to-cart" onClick={ () => onAdd(product, qty)}> Add to Cart</button>
-              <button type="button" className="buy-now" onClick="">Buy Now</button>
+              <button type="button" className="add-to-cart" onClick={() => onAdd(product, qty)}> Add to Cart</button>
+              <button type="button" className="buy-now" onClick={handleBuyNow}>Buy Now</button>
             </div>  
           </div>         
       </div>
